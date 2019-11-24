@@ -1,6 +1,6 @@
 from sqlalchemy.exc import OperationalError
 
-from falcon import HTTPInternalServerError
+import falcon
 from falcon.asgi import Request, Response
 
 __all__ = (
@@ -25,6 +25,6 @@ class HealthCheck:
             ).scalar()
             assert meaning_of_life_the_universe_and_everything == 42
         except (AssertionError, OperationalError):
-            resp.status = 500
+            resp.status = falcon.HTTP_INTERNAL_SERVER_ERROR
             resp.media['status'] = 'error'
             resp.media['services']['database'] = 'error'

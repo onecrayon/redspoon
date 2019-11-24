@@ -23,12 +23,12 @@ def upgrade():
 
     op.create_table('users',
         sa.Column('id', sa.Integer(), nullable=False),
-        sa.Column('email', sa.String(length=256), nullable=True),
         sa.Column('uuid', postgresql.UUID(as_uuid=True), nullable=True),
+        sa.Column('firebase_uid', sa.String(length=128), nullable=True),
         sa.ForeignKeyConstraint(['uuid'], ['global_uuids.uuid'], ondelete='cascade'),
         sa.PrimaryKeyConstraint('id'),
-        sa.UniqueConstraint('email'),
-        sa.UniqueConstraint('uuid')
+        sa.UniqueConstraint('uuid'),
+        sa.UniqueConstraint('firebase_uid')
     )
 
     utils.create_trigger_for_table('users')

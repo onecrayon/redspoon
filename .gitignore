@@ -10,6 +10,7 @@ __pycache__/
 .venv
 environments/*
 !environments/.env.BASE
+certs/*
 
 # macOS
 .DS_Store
