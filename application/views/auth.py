@@ -19,7 +19,7 @@ class FirebaseAuth:
             raise falcon.HTTPForbidden('Missing Token')
         # Download the cert and verify the token
         try:
-            decoded_token = await auth.verify_id_token(id_token)
+            decoded_token = auth.verify_id_token(id_token)
             uid = decoded_token['uid']
         except (ValueError, exceptions.InvalidIdTokenError):
             raise falcon.HTTPForbidden('Invalid Token')
@@ -31,7 +31,7 @@ class FirebaseAuth:
         # Create our session cookie
         try:
             expires_in = datetime.timedelta(days=7)
-            session_cookie = await auth.create_session_cookie(id_token, expires_in=expires_in)
+            session_cookie = auth.create_session_cookie(id_token, expires_in=expires_in)
             resp.set_cookie(
                 'session', session_cookie,
                 expires=datetime.datetime.now() + expires_in
