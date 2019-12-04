@@ -3,6 +3,7 @@ from falcon.asgi import Request, Response
 from application.firebase import auth
 from application.models.users import User, AnonymousUser
 
+
 class FirebaseSessionManager:
     def process_resource(self, req: Request, resp: Response, resource, params):
         if req.method == 'OPTIONS':

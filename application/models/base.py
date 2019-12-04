@@ -16,7 +16,7 @@ class GlobalUuid(db.AlchemyBase):
 class KeyedBase:
     """Base mixin for including both primary ID and public-facing UUID columns
     
-    This mixin should be used for all publically-linkable models, as it provides both an
+    This mixin should be used for all publicly-linkable models, as it provides both an
     auto-incrementing numeric ID for internal ForeignKeys, and a globally-unique UUID for:
 
     * Public ID usage (e.g. `/users/<uuid>` instead of `/users/<id>`)

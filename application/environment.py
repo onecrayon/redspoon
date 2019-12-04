@@ -19,10 +19,11 @@ class ApplicationSettings(BaseSettings):
 
     @property
     def db_url(self) -> str:
-        return f'{self.db_driver}://{self.db_user}:{self.db_password}@{self.db_host}/{self.db_name}'
+        return f'{self.db_driver}://{self.db_user}:{self.db_password}@{self.db_host}:{self.db_port}/{self.db_name}'
     
     class Config:
         env_prefix = 'REDSPOON_'
+
 
 # Configure settings object from environment variables
 settings = ApplicationSettings()

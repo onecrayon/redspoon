@@ -15,5 +15,6 @@ certs/*
 # macOS
 .DS_Store
 
-# VSCode
+# Editors
 .vscode
+.idea
